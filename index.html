@@ -8,7 +8,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* شاشة الباسورد */
+    /* شاشة الباسورد - رجعتها زي ما كانت */
     #passwordScreen {
       font-family: 'Cairo', sans-serif;
       background: #000000;
@@ -25,11 +25,11 @@
       margin-bottom: 10px;
       text-align: center;
     }
-    #passwordScreen.heart {
+   .heart {
       font-size: 30px;
       margin-bottom: 30px;
     }
-    #passwordScreen input {
+    #pass {
       background: #1a1a1a;
       border: 3px solid #FF69B4;
       border-radius: 15px;
@@ -41,7 +41,7 @@
       margin-bottom: 20px;
       outline: none;
     }
-    #passwordScreen.enter-btn {
+   .enter-btn {
       background: #FF69B4;
       color: white;
       border: none;
@@ -65,13 +65,12 @@
       font-family: 'Cairo', sans-serif;
       background: #000000;
       min-height: 100vh;
-      display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
 
-  .container {
+   .container {
       background: rgba(255,255,255,0.97);
       border-radius: 25px;
       padding: 30px 25px;
@@ -83,9 +82,9 @@
     }
 
     h1 { color: #6a4fb6; margin-bottom: 12px; font-size: 26px; }
-  .names { font-size: 20px; color: #764ba2; margin-bottom: 18px; font-weight: bold; }
+   .names { font-size: 20px; color: #764ba2; margin-bottom: 18px; font-weight: bold; }
 
-  .big-msg {
+   .big-msg {
       background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
       padding: 15px;
       border-radius: 15px;
@@ -96,13 +95,13 @@
       line-height: 1.6;
     }
 
-  .messages {
+   .messages {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       margin: 18px 0;
     }
-  .msg {
+   .msg {
       background: #f8f9fa;
       border: 2px solid #e9ecef;
       border-radius: 12px;
@@ -111,7 +110,7 @@
       color: #495057;
     }
 
-  .dates {
+   .dates {
       background: #f8f9fa;
       border-radius: 15px;
       padding: 15px;
@@ -119,24 +118,24 @@
       border: 2px dashed #ddd;
       text-align: right;
     }
-  .dates div { margin: 8px 0; font-size: 15px; color: #555; }
-  .dates span { color: #6a4fb6; font-weight: bold; }
+   .dates div { margin: 8px 0; font-size: 15px; color: #555; }
+   .dates span { color: #6a4fb6; font-weight: bold; }
 
-  .counter {
+   .counter {
       background: #f8f9fa;
       border-radius: 15px;
       padding: 15px;
       margin: 18px 0;
       border: 2px dashed #ddd;
     }
-  .counter div { margin: 8px 0; font-size: 17px; }
-  .counter span { color: #6a4fb6; font-weight: bold; font-size: 20px; }
+   .counter div { margin: 8px 0; font-size: 17px; }
+   .counter span { color: #6a4fb6; font-weight: bold; font-size: 20px; }
 
     audio { width: 100%; margin: 12px 0; border-radius: 10px; }
-  .audio-title { font-size: 13px; color: #666; margin-bottom: 5px; }
+   .audio-title { font-size: 13px; color: #666; margin-bottom: 5px; }
 
-    /* === زرار الكوبونات === */
-  .coupon-btn {
+    /* زرار الكوبونات - جوه الموقع بس */
+   .coupon-btn {
       background: linear-gradient(135deg, #FF69B4 0%, #ff1493 100%);
       color: white;
       border: none;
@@ -150,8 +149,8 @@
       box-shadow: 0 5px 15px rgba(255,105,180,0.4);
       font-family: 'Cairo', sans-serif;
     }
-  .coupon-btn:active { transform: scale(0.97); }
-  .coupon-btn:disabled {
+   .coupon-btn:active { transform: scale(0.97); }
+   .coupon-btn:disabled {
       background: #ccc;
       cursor: not-allowed;
       box-shadow: none;
@@ -234,7 +233,7 @@
         <source src="song2.mp3" type="audio/mpeg">
       </audio>
 
-      <!-- === زرار الكوبونات === -->
+      <!-- الزيادة الوحيدة هنا -->
       <button class="coupon-btn" id="couponBtn" onclick="showCoupon()">كل يوم ليك كوبون لمدة 10 ايام ♥️</button>
       <div id="couponBox"></div>
       <div id="couponMsg">خلاص يا حبيبي خدت كوبون النهاردة ♥️ تعالى بكره</div>
@@ -284,7 +283,7 @@
       if (e.key === 'Enter') checkPass();
     });
 
-    /* === منطق الكوبونات الجديد === */
+    /* الكوبونات - كوبون واحد في اليوم */
     const coupons = [
       "كوبون مش هنكد عليك<br>صالح لمدة 48 ساعه كاملين 😂",
       "كوبون مش هندب<br>صالح لمدة أسبوع 🙆🏻‍♀️🥲",
@@ -321,9 +320,7 @@
       const today = getToday();
       const lastDate = localStorage.getItem('couponDate');
 
-      if(lastDate === today) {
-        return;
-      }
+      if(lastDate === today) return;
 
       let couponIndex = parseInt(localStorage.getItem('couponIndex') || '0');
       const couponText = coupons[couponIndex];
@@ -340,4 +337,4 @@
     }
   </script>
 </body>
-</html>
+</html> 
