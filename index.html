@@ -3,29 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بحبك يا أبودي ♥️</title>
+  <title>For Abody ♥️</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    
+    /* شاشة الباسورد */
+    #passwordScreen {
       font-family: 'Cairo', sans-serif;
-      background: url('hands.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: #000000;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    #passwordScreen h1 {
+      color: #FF69B4;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    #passwordScreen .heart {
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+    #passwordScreen input {
+      background: #1a1a1a;
+      border: 3px solid #FF69B4;
+      border-radius: 15px;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      margin-bottom: 20px;
+      outline: none;
+    }
+    #passwordScreen input::placeholder {
+      color: #666;
+    }
+    #passwordScreen .enter-btn {
+      background: #FF69B4;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 250px;
+    }
+    #wrongPass {
+      color: #ff4444;
+      margin-top: 15px;
+      display: none;
+      font-size: 16px;
+    }
+
+    /* الموقع من جوه */
+    #mainSite {
+      display: none;
+      font-family: 'Cairo', sans-serif;
+      background: url('hands.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
       padding: 20px;
     }
     
-    body::before {
+    #mainSite::before {
       content: '';
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0,0,0,0.5);
       z-index: 0;
     }
 
@@ -35,6 +89,7 @@
       padding: 30px 25px;
       max-width: 450px;
       width: 100%;
+      margin: 20px auto;
       text-align: center;
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
       position: relative;
@@ -94,65 +149,22 @@
     
     audio { width: 100%; margin: 12px 0; border-radius: 10px; }
     .audio-title { font-size: 13px; color: #666; margin-bottom: 5px; }
-    
-    .divider { 
-      border: none; 
-      border-top: 2px dashed #e0e0e0; 
-      margin: 25px 0; 
-    }
-    
-    .new-btn {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 15px;
-      font-size: 17px;
-      font-weight: bold;
-      width: 100%;
-      margin: 10px 0;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .new-btn:active { transform: scale(0.97); }
-    .btn-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-    
-    .result-box {
-      background: #f8f9fa;
-      border: 2px dashed #ddd;
-      border-radius: 15px;
-      padding: 18px;
-      margin: 12px 0;
-      min-height: 55px;
-      font-size: 16px;
-      color: #333;
-      line-height: 1.7;
-    }
-    
-    #mainContent { display: none; }
-    #passwordBox input {
-      padding: 14px;
-      border: 2px solid #ddd;
-      border-radius: 12px;
-      width: 100%;
-      margin: 15px 0;
-      text-align: center;
-      font-size: 16px;
-    }
   </style>
 </head>
 <body>
-  <div class="container">
-    
-    <div id="passwordBox">
-      <h1>♥️ بحبك يا أبودي</h1>
-      <p style="color:#666;">اكتبي الباسورد يا قمر</p>
-      <input type="password" id="pass" placeholder="الباسورد">
-      <button class="new-btn" onclick="checkPass()">دخول</button>
-      <p id="wrong" style="color:red; display:none; margin-top:10px;">غلط يا روحي 😂</p>
-    </div>
 
-    <div id="mainContent">
+  <!-- شاشة الباسورد -->
+  <div id="passwordScreen">
+    <h1>الموقع ده ل Abody بس</h1>
+    <div class="heart">❤️</div>
+    <input type="password" id="pass" placeholder="•••••">
+    <button class="enter-btn" onclick="checkPass()">Enter</button>
+    <p id="wrongPass">خطأ</p>
+  </div>
+
+  <!-- الموقع من جوه -->
+  <div id="mainSite">
+    <div class="container">
       <h1>♥️ بحبك يا أبودي</h1>
       <div class="names">Abdallah Yasser ❤️ I love Abody</div>
       
@@ -192,30 +204,22 @@
       <audio controls>
         <source src="song2.mp3" type="audio/mpeg">
       </audio>
-
-      <hr class="divider">
-
-      <button class="new-btn" onclick="showLove()">ليه بحبك؟</button>
-      <div class="result-box" id="loveResult">🥺 دوس على الزرار عشان تعرف</div>
-      
-      <button class="new-btn btn-blue" onclick="showCoupon()">ليك كل يوم كوبون جديد<br>لمدة 10 أيام</button>
-      <div class="result-box" id="couponResult">😂 دوس عشان تشوف كوبون النهاردة</div>
       
     </div>
   </div>
 
   <script>
-    const PASSWORD = "abody307";
+    const PASSWORD = "abody";
     const ENGAGEMENT_DATE = new Date("2023-11-10T00:00:00");
     
     function checkPass() {
       if(document.getElementById('pass').value === PASSWORD) {
-        document.getElementById('passwordBox').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('mainSite').style.display = 'block';
         startCounter();
         updateDates();
       } else {
-        document.getElementById('wrong').style.display = 'block';
+        document.getElementById('wrongPass').style.display = 'block';
       }
     }
 
@@ -241,59 +245,9 @@
       }, 1000);
     }
 
-    // الأسباب بتاعتك يا قمر ♥️
-    const loveReasons = [
-      "عشان حنيتك ♥️",
-      "عشان ضحكتك حلوه اوي",
-      "عشان بتضحكني 😂",
-      "عشان مستحمل غلطاتي",
-      "عشان بتراضيني",
-      "عشان حضنك اللي بحسه بيتي",
-      "عشان مرتاحتش غير معاك",
-      "عشان بتفهمني",
-      "عشان بتقسى ع الكل معاده انا",
-      "عشان اماني الوحيد",
-      "عشان سري",
-      "عشان خطفت قلبي",
-      "عشان ليك ريحه مميزه عمري ما شميتها ف حد",
-      "عشان صوتك التحفه",
-      "عشان خفة دمك",
-      "عشان طيب اوي",
-      "عشان شوفتك اجمل اب",
-      "عشان لو ظروفك تسمح هتجبلي الدنيا كلها",
-      "عشان مبتشيلنيش هم حاجة",
-      "عشان بتيجي ع الدنيا عشاني ♥️"
-    ];
-
-    const coupons = [
-      "كوبون حضن كبير أوي بدون سبب ♥️",
-      "كوبون مساج 10 دقايق لما تكون تعبان",
-      "كوبون أنا هعملك أكلك المفضل النهاردة",
-      "كوبون فيلم من اختيارك وأنا مش هنام",
-      "كوبون بوسة على الخد وقت ما تحب",
-      "كوبون يوم من غير نكد خالص وعد 😂",
-      "كوبون مكالمة نص الليل نحكي فيها براحتنا",
-      "كوبون أنا موافقة على أي خروجة تختارها",
-      "كوبون رسالة حب في نص اليوم تفاجئك",
-      "كوبون هدية صغيرة على ذوقي ♥️"
-    ];
-
-    function showLove() {
-      const random = loveReasons[Math.floor(Math.random() * loveReasons.length)];
-      document.getElementById('loveResult').innerHTML = random;
-    }
-
-    function showCoupon() {
-      const today = new Date().toDateString();
-      const saved = JSON.parse(localStorage.getItem('coupon') || '{}');
-      if(saved.date === today) {
-        document.getElementById('couponResult').innerHTML = saved.text;
-      } else {
-        const random = coupons[Math.floor(Math.random() * coupons.length)];
-        document.getElementById('couponResult').innerHTML = random;
-        localStorage.setItem('coupon', JSON.stringify({date: today, text: random}));
-      }
-    }
+    document.getElementById('pass').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') checkPass();
+    });
   </script>
 </body>
 </html>
