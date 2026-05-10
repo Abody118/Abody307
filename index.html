@@ -1,192 +1,299 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بحبك يا أبودي ♥️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بحبك يا أبودي ♥️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: url('hands.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: 0;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-       .container {
-            background: white;
-            border-radius: 25px;
-            padding: 30px 25px;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        h1 {
-            color: #764ba2;
-            margin-bottom: 25px;
-            font-size: 28px;
-        }
-
-       .btn {
-            width: 100%;
-            padding: 18px;
-            margin: 15px 0;
-            border: none;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-       .btn-love {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-       .btn-coupon {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            line-height: 1.4;
-        }
-
-       .btn:active {
-            transform: scale(0.95);
-        }
-
-       .result-box {
-            margin-top: 15px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            font-size: 17px;
-            line-height: 1.6;
-            border: 2px dashed #ddd;
-        }
-
-       .result-box.active {
-            border: 2px solid #764ba2;
-            background: #fff;
-            animation: pop 0.3s ease;
-        }
-
-        @keyframes pop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-       .divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #ddd, transparent);
-            margin: 25px 0;
-        }
-
-       .heart {
-            font-size: 24px;
-            animation: beat 1s infinite;
-        }
-
-        @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-    </style>
+    .container {
+      background: rgba(255,255,255,0.97);
+      border-radius: 25px;
+      padding: 30px 25px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(8px);
+    }
+    
+    h1 { color: #6a4fb6; margin-bottom: 12px; font-size: 26px; }
+    .names { font-size: 20px; color: #764ba2; margin-bottom: 18px; font-weight: bold; }
+    
+    .big-msg {
+      background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+      padding: 15px;
+      border-radius: 15px;
+      margin: 15px 0;
+      font-size: 16px;
+      color: #2d3436;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+    
+    .messages {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .msg {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 12px 8px;
+      font-size: 14px;
+      color: #495057;
+    }
+    
+    .dates {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 18px 0;
+      border: 2px dashed #ddd;
+      text-align: right;
+    }
+    .dates div { margin: 8px 0; font-size: 15px; color: #555; }
+    .dates span { color: #6a4fb6; font-weight: bold; }
+    
+    .counter { 
+      background: #f8f9fa; 
+      border-radius: 15px; 
+      padding: 15px; 
+      margin: 18px 0;
+      border: 2px dashed #ddd;
+    }
+    .counter div { margin: 8px 0; font-size: 17px; }
+    .counter span { color: #6a4fb6; font-weight: bold; font-size: 20px; }
+    
+    audio { width: 100%; margin: 12px 0; border-radius: 10px; }
+    .audio-title { font-size: 13px; color: #666; margin-bottom: 5px; }
+    
+    .divider { 
+      border: none; 
+      border-top: 2px dashed #e0e0e0; 
+      margin: 25px 0; 
+    }
+    
+    .new-btn {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      width: 100%;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .new-btn:active { transform: scale(0.97); }
+    .btn-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    
+    .result-box {
+      background: #f8f9fa;
+      border: 2px dashed #ddd;
+      border-radius: 15px;
+      padding: 18px;
+      margin: 12px 0;
+      min-height: 55px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+    }
+    
+    #mainContent { display: none; }
+    #passwordBox input {
+      padding: 14px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      width: 100%;
+      margin: 15px 0;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>بحبك يا أبودي <span class="heart">♥️</span></h1>
-
-        <!-- زرار ليه بحبك -->
-        <button class="btn btn-love" onclick="showReason()">
-            ليه بحبك؟
-        </button>
-        <div id="reasonBox" class="result-box">
-            دوس على الزرار عشان تعرف 🥺
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- زرار الكوبونات -->
-        <button class="btn btn-coupon" onclick="showCoupon()">
-            ليك كل يوم كوبون جديد<br>لمدة 10 أيام
-        </button>
-        <div id="couponBox" class="result-box">
-            دوس عشان تشوف كوبون النهاردة 😂
-        </div>
+  <div class="container">
+    
+    <div id="passwordBox">
+      <h1>♥️ بحبك يا أبودي</h1>
+      <p style="color:#666;">اكتبي الباسورد يا قمر</p>
+      <input type="password" id="pass" placeholder="الباسورد">
+      <button class="new-btn" onclick="checkPass()">دخول</button>
+      <p id="wrong" style="color:red; display:none; margin-top:10px;">غلط يا روحي 😂</p>
     </div>
 
-    <script>
-        // الـ 20 سبب
-        const reasons = [
-            "عشان انت أماني في الدنيا دي ♥️",
-            "عشان ضحكتك بتنسيني أي زعل",
-            "عشان انت أول حد بفكر فيه لما أفرح",
-            "عشان بحس إني طفلة معاك",
-            "عشان انت بتفهمني من غير ما أتكلم",
-            "عشان في حضنك بنسى الدنيا كلها",
-            "عشان انت سندي وضهري",
-            "عشان بتحبني وأنا في أسوأ حالاتي",
-            "عشان انت السبب اللي بيخليني أصحى مبسوطة",
-            "عشان لما بتبصلي بحس إني ملكة",
-            "عشان انت بتخليني أحب نفسي أكتر",
-            "عشان كل حاجة معاك ليها طعم تاني",
-            "عشان انت بيتي اللي برتاح فيه",
-            "عشان صوتك بيطمني مهما كنت خايفة",
-            "عشان انت بتخلي المستحيل ممكن",
-            "عشان وجودك في حياتي نعمة بحمد ربنا عليها",
-            "عشان انت الوحيد اللي بعرف أكون نفسي معاه",
-            "عشان لما بتزعل ببقى عايزة أشيل الزعل عنك",
-            "عشان انت الحلم اللي اتحقق",
-            "عشان ببساطة.. انت ♥️"
-        ];
+    <div id="mainContent">
+      <h1>♥️ بحبك يا أبودي</h1>
+      <div class="names">Abdallah Yasser ❤️ I love Abody</div>
+      
+      <div class="big-msg">
+        كل ثانية بتعدي وانا معاك بتبقى أحلى من اللي قبلها<br>
+        ربنا يخليك ليا يا أغلى ما في حياتي ♥️
+      </div>
+      
+      <div class="messages">
+        <div class="msg">انت أحلى حاجة حصلتلي</div>
+        <div class="msg">بحبك أكتر من امبارح</div>
+        <div class="msg">معاك الدنيا ليها طعم تاني</div>
+        <div class="msg">انت نصيبي الحلو ♥️</div>
+      </div>
+      
+      <div class="dates">
+        <div>تاريخ ما اتقدملي: <span>30/6/2023</span></div>
+        <div>تاريخ ما جبتلي الدهب: <span>11/8/2023</span></div>
+        <div>تاريخ خطوبتنا: <span>10/11/2023</span></div>
+        <div>النهاردة: <span id="todayDate"></span></div>
+      </div>
+      
+      <div class="counter">
+        <div>مخطوبين بقالنا</div>
+        <div><span id="days">0</span> يوم</div>
+        <div><span id="hours">0</span> ساعة 
+             <span id="minutes">0</span> دقيقة 
+             <span id="seconds">0</span> ثانية</div>
+      </div>
 
-        // الـ 10 كوبونات
-        const coupons = [
-            "كوبون مش هنكد عليك<br>صالح لمدة 48 ساعه كاملين 😂",
-            "كوبون مش هندب<br>صالح لمدة أسبوع 🙆🏻‍♀️🥲",
-            "كوبون اختار اي اكله بتحبها من ايدي واعملهالك النهارده ♥️",
-            "كوبون حضن مجاني صالح لمدي الحياه من غير سبب",
-            "كوبون حاجات حلوه تجيلك النهارده",
-            "كوبون يوم كامل دلع",
-            "كوبون بوسه كبيره",
-            "كوبون اعزمك ع الغدا ف المكان اللي تختاره مهما كان",
-            "كوبون هصالحك حتى لو انت الغلطان 🥺♥️",
-            "كوبون هسيبك تلعب دومنا من غير زن 😂"
-        ];
+      <div class="audio-title">أغنيتنا الأولى ♥️</div>
+      <audio controls>
+        <source src="song1.mp3" type="audio/mpeg">
+      </audio>
+      
+      <div class="audio-title">أغنيتنا التانية ♥️</div>
+      <audio controls>
+        <source src="song2.mp3" type="audio/mpeg">
+      </audio>
 
-        function showReason() {
-            const box = document.getElementById('reasonBox');
-            const randomIndex = Math.floor(Math.random() * reasons.length);
-            box.innerHTML = reasons[randomIndex];
-            box.classList.add('active');
-        }
+      <hr class="divider">
 
-        function showCoupon() {
-            const box = document.getElementById('couponBox');
+      <button class="new-btn" onclick="showLove()">ليه بحبك؟</button>
+      <div class="result-box" id="loveResult">🥺 دوس على الزرار عشان تعرف</div>
+      
+      <button class="new-btn btn-blue" onclick="showCoupon()">ليك كل يوم كوبون جديد<br>لمدة 10 أيام</button>
+      <div class="result-box" id="couponResult">😂 دوس عشان تشوف كوبون النهاردة</div>
+      
+    </div>
+  </div>
 
-            // نجيب تاريخ النهاردة ونحوله لرقم اليوم من بداية الشهر
-            const today = new Date();
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+  <script>
+    const PASSWORD = "abody307";
+    const ENGAGEMENT_DATE = new Date("2023-11-10T00:00:00");
+    
+    function checkPass() {
+      if(document.getElementById('pass').value === PASSWORD) {
+        document.getElementById('passwordBox').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        startCounter();
+        updateDates();
+      } else {
+        document.getElementById('wrong').style.display = 'block';
+      }
+    }
 
-            // نختار كوبون ثابت لليوم ده
-            const couponIndex = dayOfYear % coupons.length;
-            box.innerHTML = coupons[couponIndex];
-            box.classList.add('active');
-        }
-    </script>
+    function updateDates() {
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('todayDate').textContent = today.toLocaleDateString('ar-EG', options);
+    }
+
+    function startCounter() {
+      setInterval(() => {
+        const now = new Date();
+        const diff = now - ENGAGEMENT_DATE;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+      }, 1000);
+    }
+
+    // الأسباب بتاعتك يا قمر ♥️
+    const loveReasons = [
+      "عشان حنيتك ♥️",
+      "عشان ضحكتك حلوه اوي",
+      "عشان بتضحكني 😂",
+      "عشان مستحمل غلطاتي",
+      "عشان بتراضيني",
+      "عشان حضنك اللي بحسه بيتي",
+      "عشان مرتاحتش غير معاك",
+      "عشان بتفهمني",
+      "عشان بتقسى ع الكل معاده انا",
+      "عشان اماني الوحيد",
+      "عشان سري",
+      "عشان خطفت قلبي",
+      "عشان ليك ريحه مميزه عمري ما شميتها ف حد",
+      "عشان صوتك التحفه",
+      "عشان خفة دمك",
+      "عشان طيب اوي",
+      "عشان شوفتك اجمل اب",
+      "عشان لو ظروفك تسمح هتجبلي الدنيا كلها",
+      "عشان مبتشيلنيش هم حاجة",
+      "عشان بتيجي ع الدنيا عشاني ♥️"
+    ];
+
+    const coupons = [
+      "كوبون حضن كبير أوي بدون سبب ♥️",
+      "كوبون مساج 10 دقايق لما تكون تعبان",
+      "كوبون أنا هعملك أكلك المفضل النهاردة",
+      "كوبون فيلم من اختيارك وأنا مش هنام",
+      "كوبون بوسة على الخد وقت ما تحب",
+      "كوبون يوم من غير نكد خالص وعد 😂",
+      "كوبون مكالمة نص الليل نحكي فيها براحتنا",
+      "كوبون أنا موافقة على أي خروجة تختارها",
+      "كوبون رسالة حب في نص اليوم تفاجئك",
+      "كوبون هدية صغيرة على ذوقي ♥️"
+    ];
+
+    function showLove() {
+      const random = loveReasons[Math.floor(Math.random() * loveReasons.length)];
+      document.getElementById('loveResult').innerHTML = random;
+    }
+
+    function showCoupon() {
+      const today = new Date().toDateString();
+      const saved = JSON.parse(localStorage.getItem('coupon') || '{}');
+      if(saved.date === today) {
+        document.getElementById('couponResult').innerHTML = saved.text;
+      } else {
+        const random = coupons[Math.floor(Math.random() * coupons.length)];
+        document.getElementById('couponResult').innerHTML = random;
+        localStorage.setItem('coupon', JSON.stringify({date: today, text: random}));
+      }
+    }
+  </script>
 </body>
 </html>
